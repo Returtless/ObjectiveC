@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Student : NSObject
+@interface Student : NSObject {
+@protected
+    int _age;
+}
 - (instancetype)initWithParams:(NSString *)name surname:(NSString *)surname age:(int)age;
 
 

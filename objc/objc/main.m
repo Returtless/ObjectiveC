@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Student.h"
+#import "Magistrant.h"
 
 int main(int argc, const char * argv[]) {
     Student *student1 = [[Student alloc] initWithParams:@"Василий" surname:@"Пупкин" age:24];
@@ -22,5 +23,8 @@ int main(int argc, const char * argv[]) {
     
     Student *student3 = [[Student alloc] initWithParams:@"Иноккентий" surname:@"Петров" age:21];
     [student3 description];
+    
+    Magistrant *magistrant =[[Magistrant alloc] initWithParams:@"Богдан" surname:@"Терентьев" age:27 endedSpeciality:@"Информационные технологии"];
+    [magistrant description];
     return 0;
 }
