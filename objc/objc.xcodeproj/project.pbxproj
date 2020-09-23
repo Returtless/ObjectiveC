@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5279654E2506BD77007A189B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5279654D2506BD77007A189B /* main.m */; };
+		5284412D251BB5EE00A12B4D /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284412C251BB5EE00A12B4D /* Bird.m */; };
+		52844130251BB6F900A12B4D /* BirdsFlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284412F251BB6F900A12B4D /* BirdsFlock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		5279654A2506BD77007A189B /* objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = objc; sourceTree = BUILT_PRODUCTS_DIR; };
 		5279654D2506BD77007A189B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5284412B251BB5EE00A12B4D /* Bird.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
+		5284412C251BB5EE00A12B4D /* Bird.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
+		5284412E251BB6F900A12B4D /* BirdsFlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BirdsFlock.h; sourceTree = "<group>"; };
+		5284412F251BB6F900A12B4D /* BirdsFlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BirdsFlock.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				5279654D2506BD77007A189B /* main.m */,
+				5284412E251BB6F900A12B4D /* BirdsFlock.h */,
+				5284412F251BB6F900A12B4D /* BirdsFlock.m */,
+				5284412B251BB5EE00A12B4D /* Bird.h */,
+				5284412C251BB5EE00A12B4D /* Bird.m */,
 			);
 			path = objc;
 			sourceTree = "<group>";
@@ -119,7 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5284412D251BB5EE00A12B4D /* Bird.m in Sources */,
 				5279654E2506BD77007A189B /* main.m in Sources */,
+				52844130251BB6F900A12B4D /* BirdsFlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +250,7 @@
 		527965522506BD77007A189B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A9AML55U6D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -248,6 +261,7 @@
 		527965532506BD77007A189B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A9AML55U6D;
 				ENABLE_HARDENED_RUNTIME = YES;
