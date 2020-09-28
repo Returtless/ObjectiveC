@@ -45,10 +45,15 @@ PrinterBlock dictionary = ^(NSObject * obj) {
 
 PrinterBlock set = ^(NSObject * obj) {
     printf("Печать элементов набора:\n");
+    //порядок из набора по сути неважен, можем вывести параллельно
+    //я в курсе что оно выведет вообще вразброс с другими выводами, но запариваться в таких примерах както неохота))
+    dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
     NSEnumerator *enumerator = [(NSSet *)obj objectEnumerator];
     id element;
     while (element =[ enumerator nextObject]) {
-        [Printer print:element];
+        dispatch_async(queue, ^{
+            [Printer print:element];
+        });
     }
 };
 
