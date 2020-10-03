@@ -26,35 +26,50 @@
     _gridView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.view addSubview:_gridView];
     
-    _paddleTop = [[UIImageView alloc] initWithFrame:CGRectMake(30, 40, 90, 60)];
-    _paddleTop.image = [UIImage imageNamed:@"paddleTop"];
-    _paddleTop.contentMode = UIViewContentModeScaleAspectFit;
+    _paddleTop = [self createUIImageWithName:@"paddleTop" x:30 y:40 width:PADDLE_WIDTH height:PADDLE_HEIGHT];
     [self.view addSubview:_paddleTop];
     
-    _paddleBottom = [[UIImageView alloc] initWithFrame:CGRectMake(30, SCREEN_HEIGHT - 90, 90, 60)];
-    _paddleBottom.image = [UIImage imageNamed:@"paddleBottom"];
-    _paddleBottom.contentMode = UIViewContentModeScaleAspectFit;
+    _paddleBottom = [self createUIImageWithName:@"paddleBottom" x:30 y:SCREEN_HEIGHT - 90 width:PADDLE_WIDTH height:PADDLE_HEIGHT];
     [self.view addSubview:_paddleBottom];
     
+    //создание методом почемуто не закругляет углы
     _ball = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 10, self.view.center.y - 10, 20, 20)];
     _ball.backgroundColor = [UIColor whiteColor];
     _ball.layer.cornerRadius = 10;
     _ball.hidden = YES;
     [self.view addSubview:_ball];
     
-    _scoreTop = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 70, HALF_SCREEN_HEIGHT - 70, 50, 50)];
-    _scoreTop.textColor = [UIColor whiteColor];
-    _scoreTop.text = @"0";
-    _scoreTop.font = [UIFont systemFontOfSize:40.0 weight:UIFontWeightLight];
-    _scoreTop.textAlignment = NSTextAlignmentCenter;
+    _scoreTop = [self createUILabel:SCREEN_WIDTH - 70 y:HALF_SCREEN_HEIGHT - 70 width:50 height:50];
     [self.view addSubview:_scoreTop];
     
-    _scoreBottom = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 70, HALF_SCREEN_HEIGHT + 70, 50, 50)];
-    _scoreBottom.textColor = [UIColor whiteColor];
-    _scoreBottom.text = @"0";
-    _scoreBottom.font = [UIFont systemFontOfSize:40.0 weight:UIFontWeightLight];
-    _scoreBottom.textAlignment = NSTextAlignmentCenter;
+    _scoreBottom = [self createUILabel:SCREEN_WIDTH - 70 y:HALF_SCREEN_HEIGHT + 70 width:50 height:50];
     [self.view addSubview:_scoreBottom];
+}
+
+- (UILabel *)createUILabel:(int)xParameter y:(int)yParamater width:(int)widthParameter height:(int)heightParameter {
+    CGRect cellFrame = CGRectMake(xParameter, yParamater, widthParameter, heightParameter);
+    UILabel *label = [[UILabel alloc] initWithFrame:cellFrame];
+    label.textColor = WHITE_COLOR;
+    label.text = @"0";
+    label.font = SCORE_FONT;
+    label.textAlignment = NSTextAlignmentCenter;
+    return label;
+}
+
+- (UIImageView *)createUIImageWithName:(NSString*) name x:(int)xParameter y:(int)yParamater width:(int)widthParameter height:(int)heightParameter {
+    CGRect cellFrame = CGRectMake(xParameter, yParamater, widthParameter, heightParameter);
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:cellFrame];
+    imageView.image = [UIImage imageNamed:name];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    return imageView;
+}
+
+- (UIView *)createBall:(int)xParameter y:(int)yParamater width:(int)widthParameter height:(int)heightParameter {
+    CGRect cellFrame = CGRectMake(xParameter, yParamater, widthParameter, heightParameter);
+    UIView *view = [[UILabel alloc] initWithFrame:cellFrame];
+    view.backgroundColor = WHITE_COLOR;
+    view.hidden = NO;
+    return view;
 }
 
 @end

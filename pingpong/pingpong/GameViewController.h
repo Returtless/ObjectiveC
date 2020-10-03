@@ -13,6 +13,11 @@
 #define HALF_SCREEN_WIDTH SCREEN_WIDTH/2
 #define HALF_SCREEN_HEIGHT SCREEN_HEIGHT/2
 #define MAX_SCORE 6
+#define BALL_HEIGHT 20
+#define PADDLE_HEIGHT 60
+#define PADDLE_WIDTH 90
+#define WHITE_COLOR [UIColor whiteColor]
+#define SCORE_FONT [UIFont systemFontOfSize:40.0 weight:UIFontWeightLight]
 
 @interface GameViewController : UIViewController
 
