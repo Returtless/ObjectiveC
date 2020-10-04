@@ -262,6 +262,7 @@
     return view;
 }
 
+#pragma mark Интроспекция
 - (NSString *)description {
     NSMutableDictionary *propertyValues = [NSMutableDictionary dictionary];
     unsigned int propertyCount;
@@ -279,6 +280,23 @@
     free(properties);
     return [NSString stringWithFormat:@"%@: %@", self.class, propertyValues];
 }
+
+#pragma mark Свизлинг (подмена методаviewWillAppear)
++ (void)load {
+    static dispatch_once_t once_token;
+    dispatch_once(&once_token,  ^{
+        SEL viewWillAppearSelector = @selector(viewDidAppear:);
+        SEL viewWillAppearLoggerSelector = @selector(loggedViewDidAppear:);
+        Method originalMethod = class_getInstanceMethod(self, viewWillAppearSelector);
+        Method extendedMethod = class_getInstanceMethod(self, viewWillAppearLoggerSelector);
+        method_exchangeImplementations(originalMethod, extendedMethod);
+    });
+}
+- (void) loggedViewDidAppear:(BOOL)animated {
+    [self loggedViewDidAppear:animated];
+    NSLog(@"Добавление лога в ViewDidAppear для класса %@", [self class]);
+}
+
 @end
 
 
