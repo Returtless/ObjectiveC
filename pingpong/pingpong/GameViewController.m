@@ -141,13 +141,17 @@
 }
 
 - (int)gameOver {
-    if ([_scoreTop.text intValue] >= MAX_SCORE) return 1;
-    if ([_scoreBottom.text intValue] >= MAX_SCORE) return 2;
+    if ([self checkScoreFor:_scoreTop]) return 1;
+    if ([self checkScoreFor:_scoreBottom]) return 2;
     return 0;
 }
 
+- (BOOL)checkScoreFor:(UILabel *)label {
+    return ([label.text intValue] >= MAX_SCORE);
+}
+
 - (void)start {
-    _ball.center = CGPointMake(HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT);
+    _ball.center = CENTER_POINT;
     if (!_timer) {
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(animate) userInfo:nil repeats:YES];
     }
@@ -169,7 +173,7 @@
         _dy = 1;
     }
     
-    _ball.center = CGPointMake(HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT);
+    _ball.center = CENTER_POINT;
     
     _speed = 2;
 }
@@ -193,7 +197,7 @@
         [self increaseSpeed];
     }
     NSLog(@"%@", self);
-
+    
     [self goal];
 }
 
